@@ -1,39 +1,41 @@
+// 2) Design the logic to remove the duplicate elements from an Array and after the
+// deletion the array should contain the unique elements.
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    vector<int> duplicate_element(vector<int>& nums) {
-        int i = 0;
-        int j = 1;
-
-        while (j < nums.size()) {
-
-            if (nums[i] != nums[j]) {
-                nums[i + 1] = nums[j];
-                i++;
-            }
-
-            j++;
-        }
-
-        for (int k = 0; k <= i; k++) {
-            cout << nums[k] << " ";
-        }
-
-        return nums;
-    }
-};
-
 int main() {
-    vector<int> nums = {1, 2, 3, 3, 3};
+    int arr[100], n;
 
-    Solution sol;
+    cout << "Enter number of elements: ";
+    cin >> n;
 
-    sol.duplicate_element(nums);
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
 
-    cout << endl;
+
+    for (int i = 0; i < n; i++) {
+
+    for (int j = i + 1; j < n; j++) {
+
+         if (arr[i] == arr[j]) {
+
+             for (int k = j; k < n - 1; k++) {
+                   arr[k] = arr[k + 1];
+                }
+
+                n--;
+                j--;
+            }
+        }
+    }
+
+    cout << "Array after removing duplicates: ";
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
 
     return 0;
 }

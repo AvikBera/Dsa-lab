@@ -1,37 +1,38 @@
+//3) Design the logic of a program to rotate a 1-D array by K positions.
 #include <iostream>
-#include <vector>
 using namespace std;
 
-class Solution {
-public:
-    vector<int> reverseArray(vector<int>& arr, int i, int j) {
-        while (i < j) {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
-            i++;
-            j--;
-        }
-        return arr;
-         
-    }
-    vector<int> rotateArray(vector<int>& nums, int k) {
+int main() {
+    int arr[100], temp[100];
+    int n, k;
 
-        k %= nums.size();
-        reverseArray(nums, 0, nums.size()-1);
-        reverseArray(nums, 0, k-1);
-        reverseArray(nums, k, nums.size()-1);
-        return nums;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    cout << "Enter array elements: ";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Enter K: ";
+    cin >> k;
+    k = k % n;
+    int j = 0;
+
+for (int i = k; i < n; i++) {
+    temp[j] = arr[i];
+    j++;
 }
 
-};
-int main() {
-    Solution sol;
-    vector<int> nums = {1,2,3,4,5,6,7};
-    vector<int> ans = sol.rotateArray(nums, 3);
-    for (int i: ans) {
-        cout << i << " ";
+for (int i = 0; i < k; i++) {
+    temp[j] = arr[i];
+    j++;
     }
-    cout << endl;
+
+cout << "Rotated array: ";
+for (int i = 0; i < n; i++) {
+        cout << temp[i] << " ";
+    }
+
     return 0;
 }

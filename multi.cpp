@@ -1,3 +1,4 @@
+// 4.b. Find the matrix multiplication
 #include <iostream>
 using namespace std;
 
@@ -11,8 +12,6 @@ int main() {
     cout << "Enter rows and columns of second matrix: ";
     cin >> r2 >> c2;
 
-    // Matrix multiplication is possible only when
-    // columns of first matrix = rows of second matrix
     if (c1 != r2) {
         cout << "Matrix multiplication is not possible.";
         return 0;
@@ -39,7 +38,6 @@ int main() {
         }
     }
 
-    // Matrix multiplication
     for (int i = 0; i < r1; i++) {
         for (int j = 0; j < c2; j++) {
             for (int k = 0; k < c1; k++) {

@@ -1,128 +1,111 @@
-#include<iostream>
+// 1) DevelopaMenudrivenprogramtodemonstrate the followingoperations ofArrays
+// ——MENU——-
+// 1.CREATE
+// 2.DISPLAY
+// 3.INSERT
+// 4.DELETE
+// 5. LINEAR SEARCH
+// 6. EXIT
+
+#include <iostream>
 using namespace std;
 
 int main() {
-
- int arr[100];
- int n;
- cout << "Enter the number: ";
- cin >> n;
-
-    // Create
- for(int i = 0; i <= (n - 1); i++) {
-
-   cout << "Enter the array elements: ";
-   cin >> arr[i];
-    }
-
-    int choice;
+    int arr[100];
+    int n = 0;
+    int choice, pos, value, search, found;
 
     do {
-
-        cout << "\n\n----- MENU -----" << endl;
-        cout << "1. CREATE" << endl;
-        cout << "2. DISPLAY" << endl;
-        cout << "3. INSERT" << endl;
-        cout << "4. DELETE" << endl;
-        cout << "5. LINEAR SEARCH" << endl;
-        cout << "6. EXIT" << endl;
+        cout << "\n\n--- MENU ---\n";
+        cout << "1. CREATE\n";
+        cout << "2. DISPLAY\n";
+        cout << "3. INSERT\n";
+        cout << "4. DELETE\n";
+        cout << "5. LINEAR SEARCH\n";
+        cout << "6. EXIT\n";
 
         cout << "Enter your choice: ";
         cin >> choice;
 
-        // Display
-        if(choice == 2) {
+    switch (choice) {
 
-            cout << "Array: ";
+      case 1:
+            cout << "Enter number of elements: ";
+            cin >> n;
 
-            for(int i = 0; i <= (n - 1); i++) {
+            cout << "Enter array elements:\n";
+            for (int i = 0; i < n; i++) {
+                cin >> arr[i];
+            }
+
+            cout << "Array created successfully.";
+            break;
+
+    case 2:
+            cout << "Array elements: ";
+            for (int i = 0; i < n; i++) {
                 cout << arr[i] << " ";
             }
-        }
+            break;
 
-        // Insert
-        else if(choice == 3) {
-
-            int position;
-            int value;
-
+     case 3:
             cout << "Enter position: ";
-            cin >> position;
+            cin >> pos;
 
             cout << "Enter value: ";
             cin >> value;
-
-   for(int i = n; i > position; i--) {
-        arr[i] = arr[i - 1];
-     }
-
-    arr[position] = value;
-
-     n++;
-
-     cout << "Array after insertion: ";
-
-      for(int i = 0; i < n; i++) {
-                cout << arr[i] << " ";
+    for (int i = n; i >= pos; i--) {
+                arr[i] = arr[i - 1];
             }
-        }
 
-        // Delete
-        else if(choice == 4) {
+        arr[pos - 1] = value;
+            n++;
 
-            int position;
+        cout << "Element inserted successfully.";
+            break;
 
+        case 4:
             cout << "Enter position to delete: ";
-            cin >> position;
+            cin >> pos;
 
             // Shift elements to the left
-            for(int i = position; i < n - 1; i++) {
+            for (int i = pos - 1; i < n - 1; i++) {
                 arr[i] = arr[i + 1];
             }
 
             n--;
 
-            cout << "Array after deletion: ";
-
-            for(int i = 0; i < n; i++) {
-                cout << arr[i] << " ";
-            }
-        }
-
-        // Linear search
-        else if(choice == 5) {
-
-            int search;
-            bool found = false;
-
+     cout << "Element deleted successfully.";
+        break;
+        case 5:
             cout << "Enter element to search: ";
             cin >> search;
 
-            for(int i = 0; i < n; i++) {
+            found = 0;
 
-                if(arr[i] == search) {
-                    cout << "Element found at index " << i << endl;
-                    found = true;
-                    break;
+    for (int i = 0; i < n; i++) {
+         if (arr[i] == search) {
+        cout << "Element found at position " << i + 1;
+             found = 1;
+               break;
                 }
             }
 
-            if(found == false) {
-                cout << "Element not found." << endl;
+    if (found == 0) {
+         cout << "Element not found.";
             }
+
+          break;
+
+    case 6:
+          cout << "Program ended.";
+            break;
+
+        default:
+            cout << "Invalid choice!";
         }
 
-        // Exit
-        else if(choice == 6) {
-
-            cout << "Program exited." << endl;
-        }
-
-        else {
-            cout << "Invalid choice." << endl;
-        }
-
-    } while(choice != 6);
+    } while (choice != 6);
 
     return 0;
 }
